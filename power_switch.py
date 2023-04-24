@@ -3,7 +3,8 @@ import requests
 import sys
 from requests.auth import HTTPDigestAuth
 
-auth = HTTPDigestAuth('admin', 'admin')
+auth = HTTPDigestAuth('USER_ID', 'PASSWORD')
+#Replace USER_ID and PASSWORD by your credentials
 
 """ CMD codification 
     0_0_0 
@@ -26,7 +27,7 @@ def control_outlet(outlet_number, action):
             action_num = 2
         case _:
             exit(555)
-    url = f"http://192.168.1.45/admin/control.cgi?CMD=0_{number}_{action_num}"
+    url = f"http://IP_ADDRESS/admin/control.cgi?CMD=0_{number}_{action_num}"
     requests.get(url, auth=auth)
 
 control_outlet(int(sys.argv[1]),sys.argv[2])
